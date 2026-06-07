@@ -1,5 +1,21 @@
-# Vue 3 + Vite
+项目介绍 : 心理健康AI助手 是一款基于前沿人工智能技术构建的智能心理关怀平台，致力于为用户提供专业、便捷、温暖的心理健康服务。平台融合情绪监测、AI心理咨询、知识科普等核心功能，打造全方位的心理健康管理体系。
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+技术栈: Vue3 + Vite + Element Plus + Pinia + Axios + Echarts
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+
+
+
+
+流式数据交互 : 采用 SSE（Server-Sent Events）技术实现 AI 实时响应,毫秒级数据推送，通过自定义 Markdown 渲染组件实现对话渲染，打造流畅对话体验。
+
+
+
+多角色权限守卫 : 基于 Vue Router 导航守卫实现，区分管理员/普通用户，实现了路由级权限拦截，提供token失效和不存在时的自动重定向于登录回跳逻辑,。
+
+
+
+数据可视化展示 (UI/DX) : 基于 ECharts 实现情绪趋势折线图、咨询统计柱状图、用户活跃度面积图，配合统计卡片展示核心指标，支持响应式布局。
+
+
+
+响应式布局适配 : 基于 Element Plus 栅格系统实现多断点自适应布局，通过 calc() 动态计算容器高度，结合 v-for 动态渲染表单字段，实现组件复用与多端适配。
