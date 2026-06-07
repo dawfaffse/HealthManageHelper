@@ -152,7 +152,7 @@ import PageHead from '../components/PageHead.vue'
 import { ref,onMounted } from 'vue'
 import TableSearch from '../components/TableSearch.vue'
 import { getEmotionalDiary } from '@/api/admin'
-import {ElMessage} from 'element-plus'
+import {ElMessage, ElMessageBox} from 'element-plus'
 import { deleteEmotionalDiary } from '@/api/admin'
 
 
@@ -297,12 +297,11 @@ const handleDetail = (row) => {
 }
 
 const handleDelete = (row) => {
-  ElMessage.confirm('确认删除吗？', '提示', {
+  ElMessageBox.confirm('确认删除吗？', '提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning'
   }).then(() => {
- 
     ElMessage({
       type: 'success',
       message: '删除成功'
@@ -312,10 +311,8 @@ const handleDelete = (row) => {
       handleSearch()
     })
   }).catch(() => {
-
-   
+    // 用户取消删除，不做任何操作
   })
- 
 }
 
 const detailDialogVisible = ref(false)

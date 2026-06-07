@@ -2,10 +2,10 @@
   <div class="auth-layout">
    <div class="left-section">
     <div class="content">
-      <h2 class="title">心理AI助手</h2>
-      <p class="text">每个深夜,每个焦虑的深刻，我们都在这里，不必独自承受，让心连心温暖您的每一天</p>
-       <div class="robot">
-      <el-image style="width: 90px; height: 90px" :src="inUrl" alt="心理AI助手"  />
+      <h2 class="title">小独角兽心理助手</h2>
+      <p class="text">在梦幻的星空下，小独角兽用温柔的光芒守护着您，倾听您的故事，抚慰您的心灵</p>
+       <div class="unicorn">
+      <el-image style="width: 90px; height: 90px" :src="unicornUrl" alt="可爱独角兽"  />
 
     </div>
     </div>
@@ -16,7 +16,8 @@
   </div>
 </template>
 <script setup>
-const inUrl = new URL('@/assets/images/robot-fill.png', import.meta.url).href
+import unicornImg from '@/assets/iconPNG(1)/独角兽 unicorn.png'
+const unicornUrl = unicornImg
 </script>
 <style lang="scss" scoped>
 .auth-layout {
@@ -26,7 +27,7 @@ const inUrl = new URL('@/assets/images/robot-fill.png', import.meta.url).href
         justify-content: center;
         align-items: center;
         flex: 1;
-        background: linear-gradient(90deg, rgb(74, 156, 140) 0%, rgb(61, 138, 122) 100%) rgba(74, 156, 140, 0.95);
+        background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 50%, #FFD1DC 100%);
         height: 100vh;
         .content {
             display: flex;
@@ -37,25 +38,25 @@ const inUrl = new URL('@/assets/images/robot-fill.png', import.meta.url).href
                 margin-bottom: 20px;
                 font-size: 40px;
                 font-weight: bold;
-                color: #fff;
+                color: #5D4E6D;
             }
             .text {
                 margin-bottom: 20px;
                 width: 460px;
                 font-size: 20px;
-                color: #fff;
+                color: #7B6888;
                 text-align: center;
             }
-            .robot {
+            .unicorn {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 160px;
                 height: 160px;
                 border-radius: 50%;
-                border: 2px solid rgba(255, 255, 255, 0.2);
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                border: 2px solid rgba(255, 182, 193, 0.4);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 182, 193, 0.3) 100%);
+                box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2),inset 0 1px 0 rgba(255, 255, 255, 0.8);
             }
         }
     }

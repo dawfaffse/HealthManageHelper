@@ -5,7 +5,7 @@
   
    >
 
-   <el-form :model="formData" :props="props" label-width="120px" :rules="rules" ref="ruleFormRef">
+   <el-form :model="formData"  label-width="120px" :rules="rules" ref="ruleFormRef">
     <el-form-item label="文章标题" prop="title">
       <el-input v-model="formData.title"   placeholder="请输入文章标题" maxlength="200" show-word-limit clearable></el-input>
     </el-form-item>

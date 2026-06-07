@@ -173,18 +173,16 @@ router.beforeEach((to, from, next) => {
         next()
         
       }
-    // }
-}
-   
+    }
    }else{
     if(to.path.startsWith('/back')){
-      //后台跳转到登陆页面
-     next('/auth/login')
+      //后台跳转到登陆页面，带上redirect参数
+     next({ path: '/auth/login', query: { redirect: to.fullPath } })
      
     }else if(to.path === '/consultations'||to.path === '/emtion-diary'){
-      next('/auth/login')
+      //需要登录的页面，跳转到登录页并带上redirect参数
+      next({ path: '/auth/login', query: { redirect: to.fullPath } })
       
-
 
     }else{
       next()

@@ -1,5 +1,5 @@
 <template>
-  <div class="knowledge-container" ref="knowledgeContainer">
+  <div class="knowledge-container">
     <div class="header-section">
       <div class="header-content">
         <el-image style="width: 60px; height: 60px" :src="imgurl" alt="情绪日记" />
@@ -74,32 +74,12 @@
 </template>
 <script setup>
 import { getKnowledgeArticle } from '@/api/frontend'
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref } from 'vue'
+import { onMounted } from 'vue'
 import dayjs from 'dayjs'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const route = useRoute()
-const knowledgeContainer = ref(null)
-
-// 保存滚动位置
-const saveScrollPosition = () => {
-  if (knowledgeContainer.value) {
-    sessionStorage.setItem('knowledgeScrollTop', knowledgeContainer.value.scrollTop.toString())
-  }
-}
-
-// 恢复滚动位置
-const restoreScrollPosition = () => {
-  nextTick(() => {
-    if (knowledgeContainer.value) {
-      const scrollTop = sessionStorage.getItem('knowledgeScrollTop')
-      if (scrollTop) {
-        knowledgeContainer.value.scrollTop = parseInt(scrollTop)
-      }
-    }
-  })
-}
 
 const handleChange = (val) => {
   pagination.value.currentPage = val
@@ -113,7 +93,6 @@ const handleSizeChange = (val) => {
 
 // 跳转详情页
 const goToArticle = (id) => {
-  saveScrollPosition()
   router.push(`/knowledge/article/${id}`)
 }
 
@@ -153,30 +132,14 @@ const getPageList = () => {
   }).then(res => {
     List.value = res.records
     pagination.value.total = res.total
-    // 恢复滚动位置
-    restoreScrollPosition()
   })
 }
-
-// 组件卸载前保存滚动位置
-onBeforeUnmount(() => {
-  saveScrollPosition()
-})
 
 const imgurl = new URL('@/assets/images/book.png', import.meta.url).href
 </script>
 <style lang="scss" scoped>
 .knowledge-container {
     background: linear-gradient(135deg, #fafbfc 0%, #f7f9fc 50%, #f2f6fa 100%);
-    height: 100vh;
-    overflow-y: auto;
-    /* 隐藏滚动条 */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    
-    &::-webkit-scrollbar {
-        display: none; /* Chrome, Safari and Opera */
-    }
     .flex-box {
         display: flex;
         align-items: center;

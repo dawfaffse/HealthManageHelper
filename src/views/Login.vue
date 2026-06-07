@@ -36,7 +36,7 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {login} from '@/api/admin'
 import {useAdminStore} from '@/store/admin'
@@ -44,6 +44,7 @@ import {useAdminStore} from '@/store/admin'
 const adminStore = useAdminStore()
 
 const router = useRouter()
+const route = useRoute()
 
 const ruleFormRef = ref(null)
 
@@ -75,13 +76,13 @@ const submitForm = async() => {
     adminStore.setToken(res.token)
     adminStore.setUserInfo(res.userInfo)
    
+    // 获取redirect参数，优先跳转到目标页面
+    const redirect = route.query.redirect || ''
     
     if(res.roleType === "2"){
-      router.push('/back/dashboard')
+      router.push(redirect || '/back/dashboard')
     }else if(res.roleType === "1"){
-      
-       router.push('/home')
-      
+      router.push(redirect || '/home')
     }
   }else{
     ElMessage.error('登录失败')
@@ -113,7 +114,7 @@ const submitForm = async() => {
       cursor: pointer;
       margin-bottom: 60px;
        &:hover {
-          color: #4A90E2;
+          color: #fd527a;
        }
     }
     .title-text{

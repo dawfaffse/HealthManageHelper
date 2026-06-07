@@ -14,7 +14,7 @@
       <template v-else>
          <router-link class="nav-link"  to="/auth/login">登录</router-link>
          <router-link class="nav-link"  to="/auth/register">
-          <el-button type="primary" class="logout-btn">注册</el-button>
+          <el-button type="danger" class="logout-btn">注册</el-button>
          </router-link>
       </template>
     </div>
@@ -56,11 +56,18 @@
     .brand-section {
       display: flex;
       align-items: center;
+      .brand-logo {
+        border-radius: 8px;
+        border: 2px solid #FF69B4;
+        box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+        padding: 2px;
+      }
       .brand-name {
         margin-left: 10px;
         font-size: 24px;
         font-weight: 600;
-        color: #333;
+        color: #ef057a;
       }
     }
     
@@ -87,17 +94,21 @@
           transform: translateX(-50%);
           width: 0; /* 初始宽度为0 */
           height: 2px; /* 下划线粗细 */
-          background-color: #4A90E2; /* 下划线颜色 */
+          background-color: #fa9cf8; /* 下划线颜色 */
           border-radius: 1px;
           transition: width 0.3s ease; /* 动画时长和曲线 */
         }
 
         &:hover {
-          color: #4A90E2;
+          color: #ff8fe7;
           /* 悬浮时下划线拉满 */
           &::after {
             width: 100%;
           }
+        }
+        .logout-btn {
+          
+          
         }
       }
     }
@@ -130,18 +141,16 @@
 </style>
 <script setup>
 import { ref } from 'vue'
-import { useAdminStore } from '@/store/admin'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAdminStore } from '@/store/admin'
 import { ElMessage } from 'element-plus'
 import { logout } from '@/api/admin'
-
-
+import unicornImg from '@/assets/iconPNG(1)/独角兽 unicorn.png'
 
 const router = useRouter()
-
+const url1 = unicornImg
 const isLoggedIn = ref(false)
-const url1 = new URL('@/assets/images/机器人.png', import.meta.url).href
 const isCollapsed = ref(false)
 
 

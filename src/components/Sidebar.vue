@@ -35,14 +35,9 @@
 </template>
 
 <script setup>
-import { useRouter ,useRoute} from "vue-router";
-import {useAdminStore} from '@/store/admin'
-
-import {computed} from 'vue'
-const adminStore = useAdminStore()
-const isCollapsed = computed(()=>adminStore.isCollapsed)
-
-
+import { useRouter, useRoute } from "vue-router";
+import { useAdminStore } from '@/store/admin'
+import { computed } from 'vue'
 import {
   Document,
   Menu as IconMenu,
@@ -53,12 +48,13 @@ import {
   ChatLineSquare,
   User,
 } from "@element-plus/icons-vue";
+import unicornImg from "@/assets/iconPNG(1)/独角兽 unicorn.png";
 
+const adminStore = useAdminStore()
+const isCollapsed = computed(() => adminStore.isCollapsed)
 const router = useRouter();
 const route = useRoute();
-console.log(router);
-//为了导出时地址不出错
-const iconUrl = new URL("/src/assets/images/机器人.png", import.meta.url);
+const iconUrl = unicornImg;
 
 const handleOpen = (key, keyPath) => {
   console.log(key, keyPath);
@@ -75,17 +71,23 @@ const handleClose = (key, keyPath) => {
   padding: 10px;
   background-color: #fff;
   border-bottom: 1px solid #e4e7ed;
+  :deep(.el-image) {
+    border-radius: 8px;
+    border: 2px solid #FF69B4;
+    box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+    padding: 2px;
+  }
   .info-crad {
     .brand-title {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 5px;
-      color: #303133;
+      color: #FF69B4;
     }
     .brand-subtitle {
       font-size: 14px;
-
-      color: #797979;
+      color: #7B6888;
     }
   }
 }
